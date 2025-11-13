@@ -1,38 +1,36 @@
-pipeline{
-	agent any{
-	    stage('BUILDING DOCKER IMAGES FOR FRONTEND AND BACKEND')
-	    {
-            steps
-            {
+pipeline {
+    agent any
+
+    stages {
+
+        stage('BUILDING DOCKER IMAGES FOR FRONTEND AND BACKEND') {
+            steps {
                 dir("${env.WORKSPACE}/devops") {
-                    echo 'Building the Application .....'
+                    echo ' Building the Application...'
                     sh 'docker compose build --no-cache'
-                    echo 'Application Image Built Successfully !!!'
+                    echo ' Application Image Built Successfully!'
                 }
             }
         }
-        stage('Docker Compose Down')
-        {
-            steps
-            {
+
+        stage('Docker Compose Down') {
+            steps {
                 dir("${env.WORKSPACE}/devops") {
-                    echo 'Taking down the Application .....'
+                    echo ' Taking down the Application...'
                     sh 'docker compose down'
-                    echo 'Application down Successfully !!!'
+                    echo ' Application stopped successfully!'
                 }
             }
-		}
+        }
 
-	    stage('DEPLOY')
-        {
-			steps
-	        {
-	            dir("${env.WORKSPACE}/devops") {
-	                  echo 'Deploying the Application .....'
-	                  sh 'docker compose up -d'
-	                  echo 'Application Running Successfully !!!'
-	                }
-	            }
-	        }    	        
-	    }
-	 }
+        stage('DEPLOY') {
+            steps {
+                dir("${env.WORKSPACE}/devops") {
+                    echo ' Deploying the Application...'
+                    sh 'docker compose up -d'
+                    echo ' Application is now running!'
+                }
+            }
+        }
+    }
+}
