@@ -6,7 +6,7 @@ pipeline {
         stage('BUILDING DOCKER IMAGES FOR FRONTEND AND BACKEND') {
             steps {
                 echo 'Building the Application .....'
-                sh 'docker compose build'
+                sh 'docker compose build --no-cache'
                 echo 'Application Image Built Successfully !!!'
             }
         }
