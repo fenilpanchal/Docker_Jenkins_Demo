@@ -13,6 +13,7 @@ services:
       - "3306:3306"
     volumes:
       - ./db/init.sql:/docker-entrypoint-initdb.d/init.sql
+      - mysql_data:/var/lib/mysql
     networks:
       - three-tier-net
 
@@ -44,7 +45,7 @@ services:
       - three-tier-net
 
 volumes:
-  mysql-data:
+  mysql_data:
 
 networks:
   three-tier-net:
