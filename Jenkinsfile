@@ -5,7 +5,7 @@ pipeline{
 	        {
 	            steps
 	            {
-	                dir("${env.WORKSPACE}/devops") {
+	                dir("${env.WORKSPACE}") {
 	                    echo 'Building the Application .....'
 	                    sh 'docker compose build --no-cache'
 	                    echo 'Application Image Built Successfully !!!'
@@ -16,7 +16,7 @@ pipeline{
 	        {
 	            steps
 	            {
-	                dir("${env.WORKSPACE}/devops") {
+	                dir("${env.WORKSPACE}") {
 	                    echo 'Taking down the Application .....'
 	                    sh 'docker compose down'
 	                    echo 'Application down Successfully !!!'
@@ -28,7 +28,7 @@ pipeline{
 	        {
 	            steps
 	            {
-	                dir("${env.WORKSPACE}/devops") {
+	                dir("${env.WORKSPACE}") {
 	                    echo 'Deploying the Application .....'
 	                    sh 'docker compose up -d'
 	                    echo 'Application Running Successfully !!!'
