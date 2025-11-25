@@ -46,6 +46,7 @@ services:
 
 volumes:
   mysql_data:
+    name: school_db_data
 
 networks:
   three-tier-net:
